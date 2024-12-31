@@ -1,21 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 
 const PlayerUsername = () => {
-    const [uuid, setUuid] = useState('');
+    const [username, setUsername] = useState('');
     const [playerData, setPlayerData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     const fetchPlayerData = async () => {
-        if(!uuid) 
+        if(!username) 
             return;
 
         setLoading(true);
         setError(null);
 
         try{
-            const response = await axios.get(`http://localhost:8080/api/players/${uuid}`);
+            const response = await axios.get(`http://localhost:8080/api/players/${username}`);
             setPlayerData(response.data);
         }
         catch (err){
@@ -30,7 +30,7 @@ const PlayerUsername = () => {
         <div>
             <h2>Player Information</h2>
             <div>
-                <input type="text" placeholder="Enter UUID" value={uuid} onChange={(e) => setUuid(e.target.value)}/>
+                <input type="text" placeholder="Enter Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
                 <button onClick={fetchPlayerData} disabled={loading}>
                     {loading ? 'Loading..' : 'Fetch Player Data'}
                 </button>
@@ -38,8 +38,8 @@ const PlayerUsername = () => {
             {error && <div>Error: {error}</div>}
             {playerData && (
                 <div>
-                    <p>UUID: {playerData.playerUuid}</p>
                     <p>Username: {playerData.playerName}</p>
+                    <p>UUID: {playerData.playerUuid}</p>
                     <p>First Seen: {new Date(playerData.firstSeen).toLocaleString()}</p>
                     <p>Last Seen: {new Date(playerData.lastSeen).toLocaleString()}</p>
                 </div>
