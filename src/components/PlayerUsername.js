@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-const PlayerUsername = () => {
+const PlayerUsername = ({onUuidFetched}) => {
     const [username, setUsername] = useState('');
     const [playerData, setPlayerData] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -17,6 +17,7 @@ const PlayerUsername = () => {
         try{
             const response = await axios.get(`http://localhost:8080/api/players/${username}`);
             setPlayerData(response.data);
+            onUuidFetched(response.data.playerUuid);
         }
         catch (err){
             setError(err.message);
