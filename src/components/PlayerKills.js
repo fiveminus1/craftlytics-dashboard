@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const PlayerKills = ({playerUuid}) => {
     const [kills, setKills] = useState([]);
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -11,7 +11,7 @@ const PlayerKills = ({playerUuid}) => {
             if(!playerUuid) 
                 return;
 
-            setLoading(true);
+            // setLoading(true);
             setError(null);
 
             try{
@@ -21,9 +21,9 @@ const PlayerKills = ({playerUuid}) => {
             catch (err){
                 setError(err.message);
             }
-            finally{
-                setLoading(false);
-            }
+            // finally{
+            //     setLoading(false);
+            // }
         };
 
         fetchKills();
