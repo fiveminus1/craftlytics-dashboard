@@ -9,16 +9,37 @@ function App() {
   const [playerUuid, setPlayerUuid] = useState(null);
 
   return (
-    <div className="bg-custom-black min-h-screen p-8">
-      <header className="bg-gradient-to-r from-custom-dark-red to-custom-red text-custom-white p-6 md:p-8 rounded-lg shadow-xl mb-8">
-        <h1 className="font-hubot text-4x1 font-bold text-center">Craftlytics Dashboard</h1>
-      </header>
+    <div className="flex min-h-screen">
+      {/* Navbar */}
+      <nav className="bg-custom-dark-red w-64 p-4 flex flex-col justify-between">
+        <div>
+          <h1 className="text-custom-white text-2x1 font-hubot font-bold">Craftlytics</h1>
+        </div>
+      
 
-      <main className="text-custom-gray">
-        <PlayerUsername onUuidFetched={setPlayerUuid} /> 
-        {playerUuid && <PlayerKills playerUuid={playerUuid} />}
-        {playerUuid && <BiomesExplored playerUuid={playerUuid} />}
-      </main>
+        <ul className="space-y-2">
+          <li>
+            <a href="#" className="text-custom-white hover:bg-custom-red p-2 rounded-lg block">
+              Biomes Explored
+            </a>
+          </li>
+          <li>
+            <a href="#" className="text-custom-white hover:bg-custom-red p-2 rounded-lg block">
+              Player Kills
+            </a>
+          </li>
+        </ul>
+      </nav>
+    
+
+
+      <div className="bg-custom-black min-h-screen p-8">
+        <main className="text-custom-gray">
+          <PlayerUsername onUuidFetched={setPlayerUuid} /> 
+          {playerUuid && <PlayerKills playerUuid={playerUuid} />}
+          {playerUuid && <BiomesExplored playerUuid={playerUuid} />}
+        </main>
+      </div>
     </div>
   );
 }
