@@ -15,7 +15,7 @@ const BiomesExplored = ({playerUuid}) => {
             setError(null);
 
             try{
-                const response = await axios.get(`http://localhost:8080/api/biomes_explored/${playerUuid}`);
+                const response = await axios.get(`http://localhost:8080/api/biomes-explored/${playerUuid}`);
                 setBiomes(response.data);
             }
             catch(err){
