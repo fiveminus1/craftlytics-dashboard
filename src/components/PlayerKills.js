@@ -33,7 +33,6 @@ const PlayerKills = ({playerUuid}) => {
     return (
         <div>
             <h2>Player Kills</h2>
-            {loading ? 'Loading..' : 'Fetch Player Data'}
             {error && <div>Error: {error}</div>}
             {kills.length > 0 && (
                 <ul>
