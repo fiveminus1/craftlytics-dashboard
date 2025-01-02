@@ -15,20 +15,19 @@ function App() {
         <div>
           <h1 className="text-custom-white text-2x1 font-hubot font-bold">Craftlytics</h1>
         </div>
-      
 
-        <ul className="space-y-2">
-          <li>
-            <a href="#" className="text-custom-white hover:bg-custom-red p-2 rounded-lg block">
-              Biomes Explored
-            </a>
-          </li>
-          <li>
-            <a href="#" className="text-custom-white hover:bg-custom-red p-2 rounded-lg block">
-              Player Kills
-            </a>
-          </li>
-        </ul>
+        <button className="bg-custom-red text-custom-white px-4 py-2 rounded-lg hover:bg-custom-dark-red transition-colors">
+          Home
+        </button>
+
+        <div className="flex items-center space-x-2">
+          <input 
+            type="text"
+            placeholder="Enter Username"
+            className="p-2 border border-custom-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-red"
+            />
+        </div>
+
       </nav>
     
 
