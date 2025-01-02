@@ -9,16 +9,15 @@ function App() {
   const [playerUuid, setPlayerUuid] = useState(null);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="bg-custom-black min-h-screen font-hubot">
       {/* Navbar */}
-      <nav className="bg-custom-dark-red w-64 p-4 flex flex-col justify-between">
-        <div>
-          <h1 className="text-custom-white text-2x1 font-hubot font-bold">Craftlytics</h1>
+      <nav className="bg-custom-dark-red p-4 flex justify-between items-center">
+        <div className="flex items-center space-x-4">
+         <h1 className="text-custom-white text-2x1 font-hubot font-bold">Craftlytics</h1>
+          <button className="bg-custom-red text-custom-white px-4 py-2 rounded-lg hover:bg-custom-dark-red transition-colors">
+            Home
+          </button>
         </div>
-
-        <button className="bg-custom-red text-custom-white px-4 py-2 rounded-lg hover:bg-custom-dark-red transition-colors">
-          Home
-        </button>
 
         <div className="flex items-center space-x-2">
           <input 
