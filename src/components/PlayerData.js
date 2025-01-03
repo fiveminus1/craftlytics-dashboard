@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-const PlayerData = ({username}) => {
+const PlayerData = ({username, onUuidFetched}) => {
     // const [username, setUsername] = useState('');
     const [playerData, setPlayerData] = useState(null);
     // const [loading, setLoading] = useState(false);
@@ -9,7 +9,7 @@ const PlayerData = ({username}) => {
 
     useEffect(() => {
         const fetchPlayerData = async () => {
-            if(!playerUuid) 
+            if(!username) 
                 return;
     
             // setLoading(true);
@@ -18,7 +18,7 @@ const PlayerData = ({username}) => {
             try{
                 const response = await axios.get(`http://localhost:8080/api/players/${username}`);
                 setPlayerData(response.data);
-                // onUuidFetched(response.data.playerUuid);
+                onUuidFetched(response.data.playerUuid);
             }
             catch (err){
                 setError(err.message);
@@ -28,7 +28,7 @@ const PlayerData = ({username}) => {
             // }
         };
         fetchPlayerData();
-    }, [username]
+    }, [username, onUuidFetched]
 );
     
     

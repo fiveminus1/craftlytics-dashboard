@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import './App.css';
 import './index.css';
-import PlayerUsername from './components/PlayerData';
+import PlayerData from './components/PlayerData';
 import PlayerKills from './components/PlayerKills';
 import BiomesExplored from './components/BiomesExplored';
 
 function App() {
   const [playerUuid, setPlayerUuid] = useState(null);
+  const [username, setUsername] = useState('');
 
   return (
     <div className="bg-custom-black min-h-screen font-hubot">
@@ -24,7 +25,9 @@ function App() {
             type="text"
             placeholder="Enter Username"
             className="p-2 border border-custom-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-red"
-            />
+            value={username}
+            onChange = {(e) => setUsername(e.target.value)}
+            /> 
         </div>
 
       </nav>
@@ -34,8 +37,8 @@ function App() {
       <div className="bg-custom-black min-h-screen p-8">
         <main className="text-custom-gray">
           {/* re<PlayerUsername onUuidFetched={setPlayerUuid} />  */}
-          {playerUuid && <PlayerKills playerUuid={playerUuid} />}
-          {playerUuid && <BiomesExplored playerUuid={playerUuid} />}
+          {/* {playerUuid && <PlayerKills playerUuid={playerUuid} />}
+          {playerUuid && <BiomesExplored playerUuid={playerUuid} />} */}
         </main>
       </div>
     </div>
