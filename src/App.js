@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import './index.css';
-import PlayerUsername from './components/PlayerUsername';
+import PlayerUsername from './components/PlayerData';
 import PlayerKills from './components/PlayerKills';
 import BiomesExplored from './components/BiomesExplored';
 
@@ -33,7 +33,7 @@ function App() {
 
       <div className="bg-custom-black min-h-screen p-8">
         <main className="text-custom-gray">
-          <PlayerUsername onUuidFetched={setPlayerUuid} /> 
+          {/* re<PlayerUsername onUuidFetched={setPlayerUuid} />  */}
           {playerUuid && <PlayerKills playerUuid={playerUuid} />}
           {playerUuid && <BiomesExplored playerUuid={playerUuid} />}
         </main>
