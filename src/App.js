@@ -5,6 +5,7 @@ import './index.css';
 import PlayerData from './components/PlayerData';
 import PlayerKills from './components/PlayerKills';
 import BiomesExplored from './components/BiomesExplored';
+import PlayerHead from './components/PlayerHead';
 
 function App() {
   const [playerUuid, setPlayerUuid] = useState(null);
@@ -53,11 +54,19 @@ function App() {
       <div className="bg-custom-black min-h-screen p-8">
         <main className="text-custom-white">
           {searchUsername && (
-            <>
-              <PlayerData username={searchUsername} onUuidFetched={setPlayerUuid} />
-              {playerUuid && <PlayerKills playerUuid={playerUuid} />}
-              {playerUuid && <BiomesExplored playerUuid={playerUuid} />}
-            </>
+            <div className="flex space-x-6">
+              <div className="flex-shrink-0">
+                <PlayerHead username={searchUsername} className="w-24 h-24" />
+              </div>
+              
+              <div className="flex-grow">
+                <PlayerData username={searchUsername} onUuidFetched={setPlayerUuid} />
+                <br></br>
+                {playerUuid && <PlayerKills playerUuid={playerUuid} />}
+                <br></br>
+                {playerUuid && <BiomesExplored playerUuid={playerUuid} />}
+              </div>
+            </div>
           )}
         </main>
       </div>

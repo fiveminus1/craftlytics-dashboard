@@ -1,7 +1,7 @@
 import React from 'react';
 
-const PlayerHead = ({uuid}) => {
-    const headUrl = `https://mc-heads.net/avatar/${uuid}`;
+const PlayerHead = ({username}) => {
+    const headUrl = `https://mc-heads.net/avatar/${username}`;
     
     return (
         <img src={headUrl} />
