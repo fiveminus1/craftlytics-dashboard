@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const BiomesExplored = ({playerUuid}) => {
     const [biomes, setBiomes] = useState([]);
-    // const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() =>{
@@ -11,7 +10,6 @@ const BiomesExplored = ({playerUuid}) => {
             if(!playerUuid)
                 return;
             
-            // setLoading(true);
             setError(null);
 
             try{
@@ -21,9 +19,7 @@ const BiomesExplored = ({playerUuid}) => {
             catch(err){
                 setError(err.message);
             }
-            // finally{
-            //     setLoading(false);
-            // }
+
         };
         
         fetchBiomesExplored();
