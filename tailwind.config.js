@@ -15,6 +15,9 @@ module.exports = {
         'custom-red': '#912F40',
         'custom-white': '#FFFFFA',
       },
+      borderColor: {
+        'gradient': 'linear-gradient(90deg, #912F40, #702632)',
+      },
     },
   },
   plugins: [],

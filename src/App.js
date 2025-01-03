@@ -34,7 +34,8 @@ function App() {
           <input 
               type="text"
               placeholder="Enter Username"
-              className="pl-4 pr-10 py-2 border border-custom-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-red bg-transparent text-custom-white"
+              className="pl-4 pr-10 py-2 border-2 rounded-lg focus:outline-none bg-transparent text-custom-white placeholder-custom-white 
+              placeholder-opacity-75 transition-all hover:border-gradient focus:border-gradient"
               value={username}
               onChange = {(e) => setUsername(e.target.value)}
             /> 
@@ -50,7 +51,7 @@ function App() {
 
 
       <div className="bg-custom-black min-h-screen p-8">
-        <main className="text-custom-gray">
+        <main className="text-custom-white">
           {searchUsername && (
             <>
               <PlayerData username={searchUsername} onUuidFetched={setPlayerUuid} />
