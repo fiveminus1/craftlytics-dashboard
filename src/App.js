@@ -8,6 +8,11 @@ import BiomesExplored from './components/BiomesExplored';
 function App() {
   const [playerUuid, setPlayerUuid] = useState(null);
   const [username, setUsername] = useState('');
+  const [searchUsername, setSearchUsername] = useState('');
+
+  const handleSearch = () => {
+    setSearchUsername(username);
+  }
 
   return (
     <div className="bg-custom-black min-h-screen font-hubot">
@@ -27,7 +32,13 @@ function App() {
             className="p-2 border border-custom-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-red"
             value={username}
             onChange = {(e) => setUsername(e.target.value)}
-            /> 
+          /> 
+          <button 
+            className="bg-custom-red text-custom-white px-4 py-2 rounded-lg hover:bg-custom-dark-red transition-colors"
+            onClick={handleSearch}
+          >
+            Search
+          </button>
         </div>
 
       </nav>
@@ -36,9 +47,13 @@ function App() {
 
       <div className="bg-custom-black min-h-screen p-8">
         <main className="text-custom-gray">
-          {/* re<PlayerUsername onUuidFetched={setPlayerUuid} />  */}
-          {/* {playerUuid && <PlayerKills playerUuid={playerUuid} />}
-          {playerUuid && <BiomesExplored playerUuid={playerUuid} />} */}
+          {searchUsername && (
+            <>
+              <PlayerData username={searchUsername} onUuidFetched={setPlayerUuid} />
+              {playerUuid && <PlayerKills playerUuid={playerUuid} />}
+              {playerUuid && <BiomesExplored playerUuid={playerUuid} />}
+            </>
+          )}
         </main>
       </div>
     </div>
