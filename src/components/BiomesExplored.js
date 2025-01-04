@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import BiomesBarGraph from './BiomesBarGraph.js';
 import axios from 'axios';
 
 const BiomesExplored = ({playerUuid}) => {
@@ -30,7 +31,14 @@ const BiomesExplored = ({playerUuid}) => {
         <div>
             <h2>Biomes Explored</h2>
             {error && <div>Error: {error}</div>}
-            {biomes.length > 0 && (
+            {biomes.length > 0 ? (
+                <>
+                    <BiomesBarGraph biomes={biomes} />
+                </>
+            ) : (
+                <p>No biomes explored.</p>
+            )}
+            {/* {biomes.length > 0 && (
                 <ul>
                     {biomes.map((biome) => (
                         <li key={biome.id}>
@@ -40,7 +48,7 @@ const BiomesExplored = ({playerUuid}) => {
                         </li>
                     ))}
                 </ul>
-            )}
+            )} */}
         </div>
     );
 };
