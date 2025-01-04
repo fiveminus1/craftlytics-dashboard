@@ -6,6 +6,7 @@ import PlayerData from './components/PlayerData';
 import PlayerKills from './components/PlayerKills';
 import BiomesExplored from './components/BiomesExplored';
 import PlayerHead from './components/PlayerHead';
+import Sidebar from './components/Sidebar';
 
 function App() {
   const [playerUuid, setPlayerUuid] = useState(null);
@@ -18,7 +19,7 @@ function App() {
   }
 
   return (
-    <div className="bg-custom-black min-h-screen font-hubot">
+    <div className="flex flex-col bg-custom-black min-h-screen font-hubot">
       {/* Navbar */}
       <nav className="bg-custom-dark-red p-4 flex justify-between items-center">
         <div className="flex items-center space-x-4">
@@ -29,8 +30,6 @@ function App() {
         </div>
 
         
-          
-
         <form onSubmit={handleSearch} className="relative flex items-center">
           <input 
               type="text"
@@ -48,27 +47,30 @@ function App() {
             </button>
         </form>
       </nav>
-    
 
+      <div className="flex flex-grow">
 
-      <div className="bg-custom-black min-h-screen p-8">
-        <main className="text-custom-white">
-          {searchUsername && (
-            <div className="flex space-x-6">
-              <div className="flex-shrink-0">
-                <PlayerHead username={searchUsername} className="w-24 h-24" />
+        <Sidebar />
+
+        <div className="flex-grow bg-custom-black p-8">
+          <main className="text-custom-white">
+            {searchUsername && (
+              <div className="flex space-x-6">
+                <div className="flex-shrink-0">
+                  <PlayerHead username={searchUsername} className="w-24 h-24" />
+                </div>
+                
+                <div className="flex-grow">
+                  <PlayerData username={searchUsername} onUuidFetched={setPlayerUuid} />
+                  <br></br>
+                  {playerUuid && <PlayerKills playerUuid={playerUuid} />}
+                  <br></br>
+                  {playerUuid && <BiomesExplored playerUuid={playerUuid} />}
+                </div>
               </div>
-              
-              <div className="flex-grow">
-                <PlayerData username={searchUsername} onUuidFetched={setPlayerUuid} />
-                <br></br>
-                {playerUuid && <PlayerKills playerUuid={playerUuid} />}
-                <br></br>
-                {playerUuid && <BiomesExplored playerUuid={playerUuid} />}
-              </div>
-            </div>
-          )}
-        </main>
+            )}
+          </main>
+        </div>
       </div>
     </div>
   );
