@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 
-const Sidebar = () => {
+const Sidebar = ({onStatSelect, selectedStat}) => {
     const [isCollapsed, setIsCollapsed] = useState(false);
 
     return (
@@ -16,17 +16,29 @@ const Sidebar = () => {
             {!isCollapsed && (
                 <ul className="space-y-2">
                     <li>
-                        <button className="w-full text-left p-2 text-custom-white hover:bg-custom-red rounded-lg transition-colors">
-                            Player Stats
+                        <button 
+                            className={`w-full text-left p-2 text-custom-white hover:bg-custom-red rounded-lg transition-colors
+                            ${selectedStat === 'Player Data' ? 'bg-custom-red' : ''}`}
+                            onClick={() => onStatSelect('Player Data')}
+                        >
+                            Player Data
                         </button>
                     </li>
                     <li>
-                        <button className="w-full text-left p-2 text-custom-white hover:bg-custom-red rounded-lg transition-colors">
+                        <button 
+                            className={`w-full text-left p-2 text-custom-white hover:bg-custom-red rounded-lg transition-colors
+                                ${selectedStat === 'Biomes Explored' ? 'bg-custom-red' : ''}`}
+                            onClick={() => onStatSelect('Biomes Explored')}
+                        >
                             Biomes Explored
                         </button>
                     </li>
                     <li>
-                        <button className="w-full text-left p-2 text-custom-white hover:bg-custom-red rounded-lg transition-colors">
+                        <button 
+                            className={`w-full text-left p-2 text-custom-white hover:bg-custom-red rounded-lg transition-colors
+                                ${selectedStat === 'Player Kills' ? 'bg-custom-red' : ''}`}
+                            onClick={() => onStatSelect('Player Kills')}
+                        >
                             Player Kills
                         </button>
                     </li>

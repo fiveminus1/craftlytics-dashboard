@@ -11,9 +11,14 @@ import Navbar from './components/Navbar';
 function App() {
   const [playerUuid, setPlayerUuid] = useState(null);
   const [searchUsername, setSearchUsername] = useState('');
+  const [selectedStat, setSelectedStat] = useState('Player Data');
 
   const handleSearch = (username) => {
     setSearchUsername(username);
+  }
+
+  const handleStatSelect = (stat) => {
+    setSelectedStat(stat);
   }
 
   return (
@@ -24,7 +29,7 @@ function App() {
 
       <div className="flex flex-grow">
 
-        {searchUsername && (<Sidebar />)}
+        {searchUsername && (<Sidebar onStatSelect={handleStatSelect} selectedStat={selectedStat}/>)}
 
         <div className="flex-grow bg-custom-black p-8">
           <main className="text-custom-white">
