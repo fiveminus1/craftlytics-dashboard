@@ -1,5 +1,6 @@
 import React, {useEffect, useState } from 'react';
 import axios from 'axios';
+import { fetchUsernameByUuid } from '../utils/playerUtils';
 
 const PlayerKills = ({playerUuid}) => {
     const [kills, setKills] = useState([]);
@@ -14,7 +15,21 @@ const PlayerKills = ({playerUuid}) => {
 
             try{
                 const response = await axios.get(`http://localhost:8080/api/player-kills/${playerUuid}`);
-                setKills(response.data);
+                const killsData = response.data;
+                
+                const killsWithUsernames = [];
+                for(const kill of killsData){
+                    const killerUsername = await fetchUsernameByUuid(kill.playerUuid);
+                    const killedUsername = await fetchUsernameByUuid(kill.killedPlayerUuid);
+
+                    killsWithUsernames.push({
+                        ...kill,
+                        killerUsername,
+                        killedUsername
+                    });
+                }
+                
+                setKills(killsWithUsernames);
             } 
             catch (err){
                 setError(err.message);
@@ -34,7 +49,7 @@ const PlayerKills = ({playerUuid}) => {
                     {kills.map((kill) => (
                         <li key={kill.id}>
                             <strong>
-                                {kill.playerUuid} killed {kill.killedPlayerUuid} at {new Date(kill.timestamp).toLocaleString()}
+                                {kill.killerUsername} killed {kill.killedUsername} at {new Date(kill.timestamp).toLocaleString()}
                             </strong>
                         </li>
                     ))}
