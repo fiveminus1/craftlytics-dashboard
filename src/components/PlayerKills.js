@@ -17,17 +17,17 @@ const PlayerKills = ({playerUuid}) => {
                 const response = await axios.get(`http://localhost:8080/api/player-kills/${playerUuid}`);
                 const killsData = response.data;
                 
-                const killsWithUsernames = [];
-                for(const kill of killsData){
-                    const killerUsername = await fetchUsernameByUuid(kill.playerUuid);
-                    const killedUsername = await fetchUsernameByUuid(kill.killedPlayerUuid);
-
-                    killsWithUsernames.push({
-                        ...kill,
-                        killerUsername,
-                        killedUsername
-                    });
-                }
+                const killsWithUsernames = await Promise.all(
+                    killsData.map(async (kill) => {
+                        const killerUsername = await fetchUsernameByUuid(kill.playerUuid);
+                        const killedUsername = await fetchUsernameByUuid(kill.killedPlayerUuid);
+                        return {
+                            ...kill,
+                            killerUsername,
+                            killedUsername
+                        };
+                    })
+                );
                 
                 setKills(killsWithUsernames);
             } 
