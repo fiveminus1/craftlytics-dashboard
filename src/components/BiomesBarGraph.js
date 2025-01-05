@@ -29,9 +29,13 @@ const BiomesBarGraph = ({biomes}) => {
             >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="biomeName" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
+                    <YAxis label={{
+                        value: "Times Visited",
+                        angle: -90,
+                        position: 'insideLeft',
+                        offset: 10,
+                        style: {fill: '#FFFFFA'}
+                    }}/>
                     <Bar dataKey="count" fill="#8884d8" />
                 </BarChart>
         </ResponsiveContainer>
