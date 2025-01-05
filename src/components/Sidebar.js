@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 
 const Sidebar = ({onStatSelect, selectedStat}) => {
     const [isCollapsed, setIsCollapsed] = useState(false);
@@ -10,7 +11,7 @@ const Sidebar = ({onStatSelect, selectedStat}) => {
                 className="text-custom-white mb-4"
                 onClick={()=> setIsCollapsed(!isCollapsed)}
             >
-                {isCollapsed ? '>>' : '<<'}
+                {isCollapsed ? <Bars3Icon className='h-6 w-6' /> : <XMarkIcon className='h-6 w-6' />}
             </button>
             
             {!isCollapsed && (
