@@ -24,7 +24,7 @@ function App() {
 
       <div className="flex flex-grow">
 
-        <Sidebar />
+        {searchUsername && (<Sidebar />)}
 
         <div className="flex-grow bg-custom-black p-8">
           <main className="text-custom-white">
