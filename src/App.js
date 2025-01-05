@@ -40,11 +40,22 @@ function App() {
                 </div>
                 
                 <div className="flex-grow">
-                  <PlayerData username={searchUsername} onUuidFetched={setPlayerUuid} />
+                  {selectedStat === "Player Data" && (
+                    <PlayerData username={searchUsername} onUuidFetched={setPlayerUuid} />
+                  )}
+                  
                   <br></br>
-                  {playerUuid && <PlayerKills playerUuid={playerUuid} />}
+                 
+                  {playerUuid && 
+                    selectedStat === 'Player Kills' && (
+                    <PlayerKills playerUuid={playerUuid} />)
+                  }
+
                   <br></br>
-                  {playerUuid && <BiomesExplored playerUuid={playerUuid} />}
+                  {playerUuid && 
+                    selectedStat === 'Biomes Explored' && (
+                    <BiomesExplored playerUuid={playerUuid} />)
+                  }
                 </div>
               </div>
             )}
