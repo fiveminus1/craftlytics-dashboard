@@ -9,6 +9,7 @@ const GraphToggleBar = ({selectedGraph, onSelectGraph}) => {
                     ? 'bg-custom-red text-custom-white' 
                     : 'bg-custom-gray text-custom-white hover:bg-custom-red'
                 }`}
+                onClick={() => onSelectGraph('bar')}
             >
                 Bar Chart
             </button>    
@@ -18,6 +19,7 @@ const GraphToggleBar = ({selectedGraph, onSelectGraph}) => {
                     ? 'bg-custom-red text-custom-white' 
                     : 'bg-custom-gray text-custom-white hover:bg-custom-red'
                 }`}
+                onClick={() => onSelectGraph('pie')}
             >
                 Pie Chart
             </button>   

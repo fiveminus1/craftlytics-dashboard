@@ -2,10 +2,12 @@ import React, {useEffect, useState} from 'react';
 import BiomesBarGraph from './BiomesBarGraph.js';
 import axios from 'axios';
 import BiomesPieChart from './BiomesPieChart.js';
+import GraphToggleBar from './GraphToggleBar.js';
 
 const BiomesExplored = ({playerUuid}) => {
     const [biomes, setBiomes] = useState([]);
     const [error, setError] = useState(null);
+    const [selectedGraph, setSelectedGraph] = useState('bar');
 
     useEffect(() =>{
         const fetchBiomesExplored = async () => {
@@ -34,8 +36,14 @@ const BiomesExplored = ({playerUuid}) => {
             {error && <div>Error: {error}</div>}
             {biomes.length > 0 ? (
                 <>
-                    <BiomesBarGraph biomes={biomes} />
-                    <BiomesPieChart biomes={biomes} />
+                    {selectedGraph === 'bar' && <BiomesBarGraph biomes={biomes} />}
+                    {selectedGraph === 'pie' && <BiomesPieChart biomes={biomes} />}
+                    
+                    <GraphToggleBar
+                        selectedGraph={selectedGraph}
+                        onSelectGraph={setSelectedGraph}
+                    />
+                    
                 </>
             ) : (
                 <p>No biomes explored.</p>
