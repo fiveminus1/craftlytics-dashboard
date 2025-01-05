@@ -15,7 +15,11 @@ const BiomesPieChart = ({biomes}) => {
         value: biomeCounts[biomeName],
     }));
 
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF', '#FF1919'];
+    const biomesColors = {
+        PLAINS: '#77DD77',
+        BEACH: '#64ABE3',
+        FOREST: '#228B22',
+    };
 
     return (
         <ResponsiveContainer width="100%" height={400}>
@@ -32,7 +36,8 @@ const BiomesPieChart = ({biomes}) => {
                     label={({name,percent}) => `${name} (${(percent*100).toFixed(0)}%)`}
                 >
                     {data.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        <Cell key={`cell-${index}`} 
+                        fill={biomesColors[entry.name]} />
                     ))}
                 </Pie>
             </PieChart>
