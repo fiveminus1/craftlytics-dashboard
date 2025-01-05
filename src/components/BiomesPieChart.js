@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pie, PieChart, Cell, ResponsiveContainer } from 'recharts';
+import { biomesColors } from '../utils/colors';
 
 const BiomesPieChart = ({biomes}) => {
     const biomeCounts = biomes.reduce((acc, biome) => {
@@ -14,12 +15,6 @@ const BiomesPieChart = ({biomes}) => {
         name: biomeName,
         value: biomeCounts[biomeName],
     }));
-
-    const biomesColors = {
-        PLAINS: '#77DD77',
-        BEACH: '#64ABE3',
-        FOREST: '#228B22',
-    };
 
     return (
         <ResponsiveContainer width="100%" height={400}>

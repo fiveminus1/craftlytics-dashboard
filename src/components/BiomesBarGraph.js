@@ -1,5 +1,6 @@
 import React from 'react';
 import { BarChart, CartesianGrid, ResponsiveContainer, XAxis, YAxis, Bar, Cell } from 'recharts';
+import { biomesColors } from '../utils/colors';
 
 const BiomesBarGraph = ({biomes}) => {
     const biomeCounts = biomes.reduce((acc, biome) => {
@@ -15,11 +16,7 @@ const BiomesBarGraph = ({biomes}) => {
         value: biomeCounts[biomeName],
     }));
 
-    const biomesColors = {
-        PLAINS: '#77DD77',
-        BEACH: '#64ABE3',
-        FOREST: '#228B22',
-    };
+    
 
     return (
         <ResponsiveContainer width="100%" height={400}>
