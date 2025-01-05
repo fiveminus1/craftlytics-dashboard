@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart, CartesianGrid, ResponsiveContainer, XAxis, YAxis, Bar } from 'recharts';
+import { BarChart, CartesianGrid, ResponsiveContainer, XAxis, YAxis, Bar, Cell } from 'recharts';
 
 const BiomesBarGraph = ({biomes}) => {
     const biomeCounts = biomes.reduce((acc, biome) => {
@@ -11,9 +11,15 @@ const BiomesBarGraph = ({biomes}) => {
     }, {});
 
     const data = Object.keys(biomeCounts).map((biomeName) => ({
-        biomeName,
-        count: biomeCounts[biomeName],
+        name: biomeName,
+        value: biomeCounts[biomeName],
     }));
+
+    const biomesColors = {
+        PLAINS: '#77DD77',
+        BEACH: '#64ABE3',
+        FOREST: '#228B22',
+    };
 
     return (
         <ResponsiveContainer width="100%" height={400}>
@@ -35,7 +41,12 @@ const BiomesBarGraph = ({biomes}) => {
                         offset: 10,
                         style: {fill: '#FFFFFA'}
                     }}/>
-                    <Bar dataKey="count" fill="#8884d8" />
+                    <Bar dataKey="value">
+                        {data.map((entry, index) => (
+                            <Cell key={`cell-${index}`} 
+                            fill={biomesColors[entry.name]} />
+                        ))}
+                    </Bar>
                 </BarChart>
         </ResponsiveContainer>
     );

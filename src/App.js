@@ -7,7 +7,6 @@ import BiomesExplored from './components/BiomesExplored';
 import PlayerHead from './components/PlayerHead';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
-import GraphToggleBar from './components/GraphToggleBar';
 
 function App() {
   const [playerUuid, setPlayerUuid] = useState(null);
