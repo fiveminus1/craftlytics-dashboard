@@ -1,6 +1,5 @@
 import React from 'react';
-import { BarChart, CartesianGrid, ResponsiveContainer, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
-import BiomesExplored from './BiomesExplored';
+import { BarChart, CartesianGrid, ResponsiveContainer, XAxis, YAxis, Bar } from 'recharts';
 
 const BiomesBarGraph = ({biomes}) => {
     const biomeCounts = biomes.reduce((acc, biome) => {

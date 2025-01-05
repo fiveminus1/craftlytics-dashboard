@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import BiomesBarGraph from './BiomesBarGraph.js';
 import axios from 'axios';
+import BiomesPieChart from './BiomesPieChart.js';
 
 const BiomesExplored = ({playerUuid}) => {
     const [biomes, setBiomes] = useState([]);
@@ -34,6 +35,7 @@ const BiomesExplored = ({playerUuid}) => {
             {biomes.length > 0 ? (
                 <>
                     <BiomesBarGraph biomes={biomes} />
+                    <BiomesPieChart biomes={biomes} />
                 </>
             ) : (
                 <p>No biomes explored.</p>
