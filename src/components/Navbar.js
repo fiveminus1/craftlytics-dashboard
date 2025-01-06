@@ -1,7 +1,7 @@
 import React from "react";
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 
-const Navbar = ({onSearch}) => {
+const Navbar = ({onSearch, onTabSelect, selectedTab}) => {
     const [username, setUsername] = React.useState('');
     
     const handleSearch = (e) => {
@@ -14,10 +14,16 @@ const Navbar = ({onSearch}) => {
         <nav className="bg-custom-dark-red p-4 flex justify-between items-center">
             <div className="flex items-center space-x-4">
                 <h1 className="text-custom-white text-2x1 font-hubot font-bold">Craftlytics</h1>
-                <button className="bg-custom-dark-red text-custom-white px-4 py-2 rounded-lg hover:bg-custom-red transition-colors">
+                <button className={`bg-custom-dark-red text-custom-white px-4 py-2 rounded-lg hover:underline transition-colors
+                    ${selectedTab === 'Home' ? 'underline' : ''}`}
+                    onClick={() => onTabSelect('Home')}
+                >
                     Home
                 </button>
-                <button className="bg-custom-dark-red text-custom-white px-4 py-2 rounded-lg hover:bg-custom-red transition-colors">
+                <button className={`bg-custom-dark-red text-custom-white px-4 py-2 rounded-lg hover:underline transition-colors
+                    ${selectedTab === 'Leaderboard' ? 'underline' : ''}`}
+                    onClick={() => onTabSelect('Leaderboards')}
+                >
                     Leaderboards
                 </button>
             </div>

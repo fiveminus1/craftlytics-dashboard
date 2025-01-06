@@ -10,10 +10,16 @@ import Navbar from './components/Navbar';
 function App() {
   const [playerUuid, setPlayerUuid] = useState(null);
   const [searchUsername, setSearchUsername] = useState('');
+  const [selectedTab, setSelectedTab] = useState('Home');
   const [selectedStat, setSelectedStat] = useState('Player Data');
+  
 
   const handleSearch = (username) => {
     setSearchUsername(username);
+  }
+
+  const handleTabSelect = (tab) => {
+    setSelectedTab(tab);
   }
 
   const handleStatSelect = (stat) => {
@@ -23,7 +29,7 @@ function App() {
   return (
     <div className="flex flex-col bg-custom-black min-h-screen font-hubot">
       {/* Navbar */}
-      <Navbar onSearch={handleSearch} />
+      <Navbar onSearch={handleSearch} onTabSelect={handleTabSelect} selectedTab={selectedTab}/>
       
 
       <div className="flex flex-grow">
