@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from 'react';
 import axios from 'axios';
-import { fetchUsernameByUuid } from '../utils/playerUtils';
+import { fetchUsernameByUuid } from '../../utils/playerUtils';
 
 const PlayerKills = ({playerUuid}) => {
     const [kills, setKills] = useState([]);

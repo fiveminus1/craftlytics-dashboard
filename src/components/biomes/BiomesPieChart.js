@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pie, PieChart, Cell, ResponsiveContainer } from 'recharts';
-import { biomesColors } from '../utils/colors';
+import { biomesColors } from '../../utils/colors';
 
 const BiomesPieChart = ({biomes}) => {
     const biomeCounts = biomes.reduce((acc, biome) => {

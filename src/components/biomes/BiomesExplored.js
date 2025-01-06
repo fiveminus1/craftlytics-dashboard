@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import BiomesBarGraph from './BiomesBarGraph.js';
 import axios from 'axios';
 import BiomesPieChart from './BiomesPieChart.js';
-import GraphToggleBar from './GraphToggleBar.js';
+import GraphToggleBar from '../GraphToggleBar.js';
 
 const BiomesExplored = ({playerUuid}) => {
     const [biomes, setBiomes] = useState([]);

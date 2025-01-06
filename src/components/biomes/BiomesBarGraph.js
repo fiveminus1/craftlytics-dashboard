@@ -1,6 +1,6 @@
 import React from 'react';
 import { BarChart, CartesianGrid, ResponsiveContainer, XAxis, YAxis, Bar, Cell } from 'recharts';
-import { biomesColors } from '../utils/colors';
+import { biomesColors } from '../../utils/colors';
 
 const BiomesBarGraph = ({biomes}) => {
     const biomeCounts = biomes.reduce((acc, biome) => {

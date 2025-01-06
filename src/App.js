@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import './App.css';
 import './index.css';
-import PlayerData from './components/PlayerData';
-import PlayerKills from './components/PlayerKills';
-import BiomesExplored from './components/BiomesExplored';
-import PlayerHead from './components/PlayerHead';
+import PlayerData from './components/playerdata/PlayerData';
+import PlayerKills from './components/playerkills/PlayerKills';
+import BiomesExplored from './components/biomes/BiomesExplored';
+import PlayerHead from './components/playerdata/PlayerHead';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 
