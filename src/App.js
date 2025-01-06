@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import './index.css';
-import PlayerData from './components/playerdata/PlayerData';
-import PlayerKills from './components/playerkills/PlayerKills';
-import BiomesExplored from './components/biomes/BiomesExplored';
-import PlayerHead from './components/playerdata/PlayerHead';
+
+import HomePage from './pages/HomePage';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import PlayerStatsPage from './pages/PlayerStatsPage';
 
 function App() {
-  const [playerUuid, setPlayerUuid] = useState(null);
+  
   const [searchUsername, setSearchUsername] = useState('');
   const [selectedTab, setSelectedTab] = useState('Home');
-  const [selectedStat, setSelectedStat] = useState('Player Data');
+  
   
 
   const handleSearch = (username) => {
@@ -22,53 +22,28 @@ function App() {
     setSelectedTab(tab);
   }
 
-  const handleStatSelect = (stat) => {
-    setSelectedStat(stat);
-  }
+
 
   return (
-    <div className="flex flex-col bg-custom-black min-h-screen font-hubot">
-      {/* Navbar */}
-      <Navbar onSearch={handleSearch} onTabSelect={handleTabSelect} selectedTab={selectedTab}/>
-      
+    <Router>
+      <div className="flex flex-col bg-custom-black min-h-screen font-hubot">
+        <Navbar onSearch={handleSearch} onTabSelect={handleTabSelect} selectedTab={selectedTab}/>
 
-      <div className="flex flex-grow">
-
-        {searchUsername && (<Sidebar onStatSelect={handleStatSelect} selectedStat={selectedStat}/>)}
+        <div className="flex flex-grow">
+          <Routes>
+            <Route path="/player/:username/*" element={<Sidebar />} />
+          </Routes>
+        </div>
 
         <div className="flex-grow bg-custom-black p-8">
-          <main className="text-custom-white">
-            {searchUsername && (
-              <div className="flex space-x-6">
-                <div className="flex-shrink-0">
-                  <PlayerHead username={searchUsername} className="w-24 h-24" />
-                </div>
-                
-                <div className="flex-grow">
-                  {selectedStat === "Player Data" && (
-                    <PlayerData username={searchUsername} onUuidFetched={setPlayerUuid} />
-                  )}
-                  
-                  <br></br>
-                 
-                  {playerUuid && 
-                    selectedStat === 'Player Kills' && (
-                    <PlayerKills playerUuid={playerUuid} />)
-                  }
-
-                  <br></br>
-                  {playerUuid && 
-                    selectedStat === 'Biomes Explored' && (
-                    <BiomesExplored playerUuid={playerUuid} />)
-                  }
-
-                </div>
-              </div>
-            )}
-          </main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/player/:username" element={<PlayerStatsPage />} />
+          </Routes>
         </div>
+
       </div>
-    </div>
+    </Router>
   );
 }
 
