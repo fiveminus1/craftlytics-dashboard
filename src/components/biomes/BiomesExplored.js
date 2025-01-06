@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import BiomesBarGraph from './BiomesBarGraph.js';
 import axios from 'axios';
 import BiomesPieChart from './BiomesPieChart.js';
+import BiomesBarGraph from './BiomesBarGraph.js';
 import GraphToggleBar from '../GraphToggleBar.js';
 
 const BiomesExplored = ({playerUuid}) => {
@@ -32,7 +32,7 @@ const BiomesExplored = ({playerUuid}) => {
 
     return (
         <div>
-            <h2>Biomes Explored</h2>
+            <h1 className="text-xl font-bold">Biomes Explored</h1>
             {error && <div>Error: {error}</div>}
             {biomes.length > 0 ? (
                 <>
@@ -48,17 +48,6 @@ const BiomesExplored = ({playerUuid}) => {
             ) : (
                 <p>No biomes explored.</p>
             )}
-            {/* {biomes.length > 0 && (
-                <ul>
-                    {biomes.map((biome) => (
-                        <li key={biome.id}>
-                            <strong>
-                                {biome.biomeName} at ({biome.location}) on {new Date(biome.timestamp).toLocaleString()}
-                            </strong>
-                        </li>
-                    ))}
-                </ul>
-            )} */}
         </div>
     );
 };

@@ -42,15 +42,13 @@ const PlayerKills = ({playerUuid}) => {
 
     return (
         <div>
-            <h2>Player Kills</h2>
+            <h1 className="text-xl font-bold">Player Kills</h1>
             {error && <div>Error: {error}</div>}
             {kills.length > 0 && (
                 <ul>
                     {kills.map((kill) => (
                         <li key={kill.id}>
-                            <strong>
-                                {kill.killerUsername} killed {kill.killedUsername} at {new Date(kill.timestamp).toLocaleString()}
-                            </strong>
+                            {kill.killerUsername} killed {kill.killedUsername} at {new Date(kill.timestamp).toLocaleString()}
                         </li>
                     ))}
                 </ul>

@@ -29,7 +29,7 @@ const PlayerData = ({username, onUuidFetched}) => {
     
     return (
         <div>
-            <h2>Player Information</h2>
+            <h1 className="text-xl font-bold">Player Data</h1>
             {error && <div>Error: {error}</div>}
             {playerData && (
                 <div>
