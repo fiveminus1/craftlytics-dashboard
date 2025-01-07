@@ -10,12 +10,18 @@ const Sidebar = () => {
 
     const [isCollapsed, setIsCollapsed] = useState(false);
 
-    const selectedStat = location.pathname.split('/')[3]?.replace('-', ' ') || 'Player Data';
+
+    const pathToTabMap = {
+        'player-data': 'Player Data',
+        'biomes-explored': 'Biomes Explored',
+        'player-kills': 'Player Kills',
+    };
+
+    const selectedStat = pathToTabMap[location.pathname.split('/')[3]] || 'Player Data';
 
     const handleStatSelect = (stat) => {
         navigate(`/player/${username}/${stat.toLowerCase().replace(' ', '-')}`);
     }
-
     return (
         <div className={`bg-[#5a1e2a] ${isCollapsed ? 'w-16' : 'w-64'} min-h-screen p-4 transition-all`}>
             <button

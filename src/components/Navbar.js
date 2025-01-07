@@ -2,9 +2,10 @@ import React from "react";
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import {Link, useNavigate, useLocation } from "react-router-dom";
 
-const Navbar = ({onSearch, onTabSelect, selectedTab}) => {
+const Navbar = ({onSearch}) => {
     const [username, setUsername] = React.useState('');
     const navigate = useNavigate();
+    const location = useLocation();
     
     const handleSearch = (e) => {
         e.preventDefault();
@@ -13,6 +14,8 @@ const Navbar = ({onSearch, onTabSelect, selectedTab}) => {
         }
     };
 
+    const selectedTab = location.pathname === "/" ? "Home" : "";
+
 
     return (
         <nav className="bg-custom-dark-red p-4 flex justify-between items-center">
@@ -20,13 +23,11 @@ const Navbar = ({onSearch, onTabSelect, selectedTab}) => {
                 <Link to="/" className="text-custom-white text-2x1 font-hubot font-bold">Craftlytics</Link>
                 <Link to="/" className={`bg-custom-dark-red text-custom-white px-4 py-2 rounded-lg hover:underline transition-colors
                     ${selectedTab === 'Home' ? 'underline' : ''}`}
-                    onClick={() => onTabSelect('Home')}
                 >
                     Home
                 </Link>
                 <Link to="/" className={`bg-custom-dark-red text-custom-white px-4 py-2 rounded-lg hover:underline transition-colors
                     ${selectedTab === 'Leaderboard' ? 'underline' : ''}`}
-                    onClick={() => onTabSelect('Leaderboards')}
                 >
                     Leaderboards
                 </Link>
