@@ -6,42 +6,27 @@ import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PlayerStatsPage from './pages/PlayerStatsPage';
+import PlayerData from './components/playerdata/PlayerData';
+import BiomesExplored from './components/biomes/BiomesExplored';
+import PlayerKills from './components/playerkills/PlayerKills';
 
 function App() {
-  
-  const [searchUsername, setSearchUsername] = useState('');
-  const [selectedTab, setSelectedTab] = useState('Home');
-  
-  
-
-  const handleSearch = (username) => {
-    setSearchUsername(username);
-  }
-
-  const handleTabSelect = (tab) => {
-    setSelectedTab(tab);
-  }
-
-
-
   return (
     <Router>
       <div className="flex flex-col bg-custom-black min-h-screen font-hubot">
-        <Navbar onSearch={handleSearch} onTabSelect={handleTabSelect} selectedTab={selectedTab}/>
-
+        <Navbar />
         <div className="flex flex-grow">
-          <Routes>
-            <Route path="/player/:username/*" element={<Sidebar />} />
-          </Routes>
+          <div className="flex-grow bg-custom-black text-custom-white">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/player/:username/*" element={<PlayerStatsPage />}>
+                <Route path="player-data" element={<PlayerData />}/>
+                <Route path="biomes-explored" element={<BiomesExplored />}/>
+                <Route path="player-kills" element={<PlayerKills />}/>
+              </Route>
+            </Routes>
+          </div>
         </div>
-
-        <div className="flex-grow bg-custom-black p-8">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/player/:username" element={<PlayerStatsPage />} />
-          </Routes>
-        </div>
-
       </div>
     </Router>
   );

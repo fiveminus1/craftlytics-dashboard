@@ -1,8 +1,10 @@
 import React, {useEffect, useState } from 'react';
 import axios from 'axios';
 import { fetchUsernameByUuid } from '../../utils/playerUtils';
+import { useOutletContext } from 'react-router-dom';
 
-const PlayerKills = ({playerUuid}) => {
+const PlayerKills = () => {
+    const {playerUuid} = useOutletContext();
     const [kills, setKills] = useState([]);
     const [error, setError] = useState(null);
 

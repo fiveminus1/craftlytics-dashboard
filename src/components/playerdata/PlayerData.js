@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import { useOutletContext, useParams } from 'react-router-dom';
 
-const PlayerData = ({username, onUuidFetched}) => {
+const PlayerData = () => {
+    const {username} = useParams();
+    const {setPlayerUuid} = useOutletContext();
     const [playerData, setPlayerData] = useState(null);
     const [error, setError] = useState(null);
 
@@ -15,15 +18,14 @@ const PlayerData = ({username, onUuidFetched}) => {
             try{
                 const response = await axios.get(`http://localhost:8080/api/players/${username}`);
                 setPlayerData(response.data);
-                console.log("{response.data}");
-                onUuidFetched(response.data.playerUuid);
+                setPlayerUuid(response.data.playerUuid);
             }
             catch (err){
                 setError(err.message);
             }
         };
         fetchPlayerData();
-    }, [username, onUuidFetched]
+    }, [username, setPlayerUuid]
 );
     
     

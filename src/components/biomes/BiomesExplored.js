@@ -3,8 +3,10 @@ import axios from 'axios';
 import BiomesPieChart from './BiomesPieChart.js';
 import BiomesBarGraph from './BiomesBarGraph.js';
 import GraphToggleBar from '../GraphToggleBar.js';
+import { useOutletContext } from 'react-router-dom';
 
-const BiomesExplored = ({playerUuid}) => {
+const BiomesExplored = () => {
+    const {playerUuid} = useOutletContext();
     const [biomes, setBiomes] = useState([]);
     const [error, setError] = useState(null);
     const [selectedGraph, setSelectedGraph] = useState('bar');

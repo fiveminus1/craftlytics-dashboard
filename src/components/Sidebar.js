@@ -1,9 +1,20 @@
 import React from 'react';
 import {useState} from 'react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
-const Sidebar = ({onStatSelect, selectedStat}) => {
+const Sidebar = () => {
+    const {username} = useParams();
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const [isCollapsed, setIsCollapsed] = useState(false);
+
+    const selectedStat = location.pathname.split('/')[3]?.replace('-', ' ') || 'Player Data';
+
+    const handleStatSelect = (stat) => {
+        navigate(`/player/${username}/${stat.toLowerCase().replace(' ', '-')}`);
+    }
 
     return (
         <div className={`bg-[#5a1e2a] ${isCollapsed ? 'w-16' : 'w-64'} min-h-screen p-4 transition-all`}>
@@ -20,7 +31,7 @@ const Sidebar = ({onStatSelect, selectedStat}) => {
                         <button 
                             className={`w-full text-left p-2 text-custom-white hover:bg-custom-red rounded-lg transition-colors
                             ${selectedStat === 'Player Data' ? 'bg-custom-red' : ''}`}
-                            onClick={() => onStatSelect('Player Data')}
+                            onClick={() => handleStatSelect('Player Data')}
                         >
                             Player Data
                         </button>
@@ -29,7 +40,7 @@ const Sidebar = ({onStatSelect, selectedStat}) => {
                         <button 
                             className={`w-full text-left p-2 text-custom-white hover:bg-custom-red rounded-lg transition-colors
                                 ${selectedStat === 'Biomes Explored' ? 'bg-custom-red' : ''}`}
-                            onClick={() => onStatSelect('Biomes Explored')}
+                            onClick={() => handleStatSelect('Biomes Explored')}
                         >
                             Biomes Explored
                         </button>
@@ -38,7 +49,7 @@ const Sidebar = ({onStatSelect, selectedStat}) => {
                         <button 
                             className={`w-full text-left p-2 text-custom-white hover:bg-custom-red rounded-lg transition-colors
                                 ${selectedStat === 'Player Kills' ? 'bg-custom-red' : ''}`}
-                            onClick={() => onStatSelect('Player Kills')}
+                            onClick={() => handleStatSelect('Player Kills')}
                         >
                             Player Kills
                         </button>
