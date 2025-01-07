@@ -35,8 +35,8 @@ const Sidebar = () => {
                 <ul className="space-y-2">
                     <li>
                         <button 
-                            className={`w-full text-left p-2 text-custom-white hover:bg-custom-red rounded-lg transition-colors
-                            ${selectedStat === 'Player Data' ? 'bg-custom-red' : ''}`}
+                            className={`w-full text-left p-2 text-custom-white hover:underline rounded-lg transition-colors
+                            ${selectedStat === 'Player Data' ? 'underline' : ''}`}
                             onClick={() => handleStatSelect('Player Data')}
                         >
                             Player Data
@@ -44,8 +44,8 @@ const Sidebar = () => {
                     </li>
                     <li>
                         <button 
-                            className={`w-full text-left p-2 text-custom-white hover:bg-custom-red rounded-lg transition-colors
-                                ${selectedStat === 'Biomes Explored' ? 'bg-custom-red' : ''}`}
+                            className={`w-full text-left p-2 text-custom-white hover:underline rounded-lg transition-colors
+                                ${selectedStat === 'Biomes Explored' ? 'underline' : ''}`}
                             onClick={() => handleStatSelect('Biomes Explored')}
                         >
                             Biomes Explored
@@ -53,8 +53,8 @@ const Sidebar = () => {
                     </li>
                     <li>
                         <button 
-                            className={`w-full text-left p-2 text-custom-white hover:bg-custom-red rounded-lg transition-colors
-                                ${selectedStat === 'Player Kills' ? 'bg-custom-red' : ''}`}
+                            className={`w-full text-left p-2 text-custom-white hover:underline rounded-lg transition-colors
+                                ${selectedStat === 'Player Kills' ? 'underline' : ''}`}
                             onClick={() => handleStatSelect('Player Kills')}
                         >
                             Player Kills
